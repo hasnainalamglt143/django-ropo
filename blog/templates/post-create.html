@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static  'css/editor-css.css' %}">
+{% endblock %}
+{% block  content %}
+<form method="post" action="/create-post/" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {% csrf_token %}
+    {{ form}}
+    <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="post"/>
+</form>
+
+{% endblock %}

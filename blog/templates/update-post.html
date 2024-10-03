@@ -1,0 +1,25 @@
+  {% extends 'base.html' %}
+   {% load static %}
+  
+  {% block links %}
+  <link rel="stylesheet" href="{% static  'css/editor-css.css' %}">
+  {% endblock %}
+
+  {% block content %}
+
+
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        
+    
+    {{form}}
+    <input type="submit" value="post"> 
+   </form>
+   <script>
+    // For CKEditor
+    CKEDITOR.replace('id_content');
+
+   
+</script>
+{% endblock %}

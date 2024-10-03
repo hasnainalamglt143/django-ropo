@@ -1,0 +1,31 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>blogging Website</title>
+    {% tailwind_css %}
+       
+
+    
+    {% block links %} {% endblock %}
+    {% block script %}{% endblock %}
+    <script src="https://kit.fontawesome.com/81874f1d71.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+    
+</head>
+
+<body class="bg-gray-100 w-screen relative mx-auto">
+    
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

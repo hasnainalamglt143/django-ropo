@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static  'css/custom-css.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mx-auto mt-10">
+    
+        <h2 class="text-center text-2xl font-bold text-gray-800 mb-6">Login</h2>
+
+        <form method="post" novalidate class="w-full shadow-md">
+            {% if error %}
+            <p class="text-red-500 text-center">{{error}}
+            </p>
+            {% endif %}
+            {% csrf_token %}
+            {{ form}}
+            <button type="submit" class="mx-auto  py-3 text-md bg-blue-500 ">Submit</button>
+        <p class="text-center mt-5"><a href="{% url 'password_reset' %}" class="cursor-pointer inline-block mt-3 mb-4 text-blue-500 underline">forgot password</a><br><span class="text-gray-500 ">do'nt have account?</span><a href="{% url 'register' %}" class="cursor-pointer hover:underline underline-offset-4  text-blue-500">create account</a><br>
+        </p>
+        </form>
+    </div>
+    {% endblock %}

@@ -1,0 +1,39 @@
+<!-- change-profile.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/custom-css.css' %}">
+{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Change Profile</h2>
+
+{% if messages %}
+    <ul class="messages text-center">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form class="bg-white px-8 pt-6 pb-8 mb-4 w-1/2" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div>
+        <label for="profile_pic">Profile Pic: Currently:</label>
+        {% if img_url %}
+            <img class="w-12 h-12 rounded-full hover:scale-150" src="{{ img_url }}" alt="Profile Picture">
+        {% else %}
+            <p>No profile picture was uploaded.</p>
+        {% endif %}
+        <label for="id_profile_pic">Change:</label>
+        <input type="file" name="profile_pic" accept="image/*" id="id_profile_pic" class="w-full outline-none">
+    </div>
+    
+       
+        {{ user_form }}
+    
+    
+    <button type="submit">Update Profile</button>
+</form>
+
+{% endblock %}

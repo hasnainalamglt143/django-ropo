@@ -1,0 +1,66 @@
+/* Style the title input container */
+div label{
+    font-size: 18px;          /* Increase the font size of the label */
+    font-weight: bold;        /* Make the label text bold */
+    margin-bottom: 10px;      /* Add space below the label */
+    display: block;           /* Make the label a block element */
+}
+
+div #id_title {
+    width: 100%;              /* Make the input field take full width */
+    padding: 10px;            /* Add padding inside the input field */
+    border: 2px solid #ccc;   /* Add a border */
+    border-radius: 4px;       /* Round the corners */
+    margin-bottom: 20px;      /* Add space below the input field */
+    box-sizing: border-box;   /* Include padding and border in the element's total width and height */
+    font-size: 16px;          /* Increase font size */
+}
+
+
+/* Style the CKEditor container */
+.django-ckeditor-widget {
+    width:100%;
+    margin-bottom: 20px;      /* Add space below the CKEditor widget */
+    border: 2px solid #ccc;   /* Add a border around the CKEditor area */
+    padding: 10px;            /* Add padding inside the CKEditor container */
+    border-radius: 4px;       /* Round the corners */
+    background-color: #f9f9f9; /* Light background for better visibility */
+}
+
+/* Style the textarea inside the CKEditor */
+.django-ckeditor-widget .cke_inner {
+    width: 100%;              /* Ensure the editor takes full width */
+    min-height: 300px;        /* Set a minimum height for the editor */
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    display: inline-block;    /* Display the button as an inline-block */
+    padding: 10px 20px;       /* Add padding around the button */
+    margin-top: 20px;         /* Add space above the button */
+    border: none;             /* Remove the default border */
+    border-radius: 4px;       /* Round the corners */
+    background-color: #007BFF; /* Set a background color */
+    color: #fff;              /* Set the text color to white */
+    font-size: 16px;          /* Increase font size */
+    cursor: pointer;          /* Change cursor to pointer on hover */
+}
+
+/* Change button color on hover */
+input[type="submit"]:hover {
+    background-color: #0056b3; /* Darken the button color on hover */
+}
+
+/* Optional: Style the overall container */
+form {
+    max-width: 900px;         /* Limit the form width */
+    margin: 0 auto;           /* Center the form on the page */
+    padding: 20px;            /* Add padding inside the form */
+    border: 1px solid #ddd;   /* Add a light border */
+    border-radius: 4px;       /* Round the corners */
+    background-color: #fff;   /* Set a white background */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add a subtle shadow */
+}
+textarea{
+    width:100%;
+}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+{% block script %}<script  src="{% static 'javascript/index.js' %}" defer></script>{% endblock %}
+{% block content %}
+
+<!-- Flex container to hold the whole content including footer -->
+<div class="flex flex-col mx-auto w-full">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md w-full mx-auto ">
+        <div class="px-4 py-2 flex justify-between items-center">
+            <div class="text-2xl font-bold mb-4">
+                <a href="#" class="text-gray-800">Blogify</a>
+            </div>
+            <div class="hidden md:flex space-x-4">
+                <a href="/login/" class="text-gray-600 hover:text-gray-800 hover:underline underline-4 underline-offset-8">Login</a>
+                <a href="/create-post/" class="text-gray-600 hover:text-gray-800 hover:underline underline-4 underline-offset-8">Create Post</a>
+                <a href="/related-posts/" class="text-gray-600 hover:text-gray-800 hover:underline underline-4 underline-offset-8">See Your Posts</a>
+                <a href="{% url 'change-profile' %}" ><img src="{% static 'images/profile_icon.png'%}" alt="" class="block w-8 h-8 rounded-full border-2"></a>
+            </div>
+            <div class="md:hidden flex items-center" id="menu-bar">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="menu" class="md:hidden peer-focus-within:hidden">
+            <a href="#" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="login/" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Login</a>
+            <a href="/create-post/" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">Create Post</a>
+            <a href="/related-posts/" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">See Your Posts</a>
+            <a href="{% url 'change-profile' %}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100"><img src="{% static 'images/profile_icon.png'%}" alt="" class="block w-8 h-8 border-2 rounded-full"></a>
+        </div>
+    </nav>
+
+    <!-- Main content area with flex-grow to fill remaining space -->
+    <div class="posts w-11/12 mx-auto">
+        {% for post in page.object_list %}
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full mx-auto mt-10 h-fit">
+            <div class="flex items-center mb-4 h-fit">
+                {% if post.author.userprofile.profile_pic %}
+                <img class="w-12 h-12 rounded-full mr-4" src="{{ post.author.userprofile.profile_pic.url }}">
+                {% else %}
+                <img class="w-12 h-12 rounded-full mr-4 border-1 bg-gray-300" src="">
+                {% endif %}
+                <div>
+                    <h4>
+                        {% if post.author.first_name and post.author.last_name %}
+                        {{ post.author.first_name }} {{ post.author.last_name }}
+                        {% else %}
+                        Unknown
+                        {% endif %}
+                    </h4>
+                    <p class="text-gray-600">{{ post.created_at }}</p>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ post.title }}</h3>
+            <div class="mb-4 h-fit ">{{ post.content|safe }}</div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="text-center mb-5">
+        <button class="px-2 py-1 bg-blue-500 text-white disabled:bg-gray-400" data-id="{{ page.number }}" id="previous">&lt;</button>
+        <span class="page_info font-semibold text-gray-700">{{ page.number }} of {{ paginator.num_pages }}</span>
+        <button id="next" class="px-2 py-1 bg-blue-500 text-white disabled:bg-gray-400" data-id="{{ page.number }}">&gt;</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-1 px-4 sm:py-2 w-full mx-auto">
+        <div class="container mx-auto flex items-center justify-between">
+            <div>
+                <h3 class="text-white text-lg sm:font-semibold">Connect with Us</h3>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                    <i class="fab fa-facebook-square"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white transition duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+        <div class="text-white text-center mt-3 text-sm">&copy;All rights reserved @ <span class="year">2024</span></div>
+    </footer>
+
+</div>
+
+{% endblock %}

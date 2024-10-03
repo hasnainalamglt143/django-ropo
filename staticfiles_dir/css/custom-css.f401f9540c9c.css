@@ -1,0 +1,100 @@
+/* Basic form container styling */
+.form-container{
+    width:fit-content;
+    margin:40px auto;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the divs containing form elements */
+form div {
+    margin-bottom: 15px;
+}
+
+/* Styling for labels */
+form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Styling for help text */
+form .helptext {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+/* Styling for input fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  
+}
+
+form textarea{
+    resize: none;
+    height:auto;
+}
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* Styling for submit button */
+form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin:0 auto;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.errorlist{
+    color:red;
+    font-size: medium;
+}
+form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+form button[type="submit"]:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+}
+form#create-post textarea{
+    width:100%;
+    border:10px solid red;
+}
