@@ -1,9 +1,23 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.contrib import admin
+from PIL import Image
+
 class UserProfile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE)
     profile_pic=models.ImageField(upload_to='profiles/%y/%m/%d',default='profiles/default.jpg')
+    def save(self,*args,**kwargs):
+    
+      img = Image.open(self.profile_pic.file)
+      if img.height > 150 or img.width > 150:
+         output_size = (150, 150)
+         img.thumbnail(output_size)
+         img.save(self.profile_pic.path)
+      super().save()
+
+      
+
+
 
 from ckeditor.fields import RichTextField
 class CreatePost(models.Model):

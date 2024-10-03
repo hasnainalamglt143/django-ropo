@@ -105,19 +105,7 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 
-# if DEBUG:
-#         DATABASES = {
-#     'default': {
-          
-#     "ENGINE": "django.db.backends.mysql",
-#         "NAME": "blogging",
-#         "USER": "root",
-#         "PASSWORD": os.getenv("_password"),
-#         "HOST": "127.0.0.1",
-#         "PORT": "3306",
 
-#     }
-#     }
 import os
 import dj_database_url
 
@@ -182,6 +170,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+DATA_UPLOAD_MAX_MEMORY_SIZE=56621440
 
 STATIC_ROOT=os.path.join(BASE_DIR,"staticfiles_dir")
 STATIC_URL = 'static/'
@@ -230,7 +219,7 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 300,
-        'width': 820,
+        'width': '100%',
     },
     'extraplugins':["links"]
 }

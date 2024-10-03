@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import UserProfile,CreatePost
+from PIL import Image
 # from ckeditor.widgets import CKEditorWidget
 
 class CustomUserCreationForm(UserCreationForm):
@@ -19,6 +20,20 @@ class CustomUserCreationForm(UserCreationForm):
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Email already exists")
         return email
+    
+    def clean_profile_pic(self):
+        try:
+            image=Image.open(self.file)
+            image.verify()
+            return True
+        except:
+            raise  forms.ValidationError("pl choose image file")
+
+
+
+
+
+
 class LoginForm(forms.Form):
     username=forms.CharField(required=True)
     password=forms.CharField(widget=forms.PasswordInput)

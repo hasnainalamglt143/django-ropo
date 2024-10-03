@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container mx-auto mt-10">
     
-        <h2 class="text-center text-2xl font-bold text-gray-800 mb-6">Register</h2>
+        <h2 class="mb-6 text-2xl font-bold text-center text-gray-800 sm:w-11/12" >Register</h2>
         <form method="post" enctype="multipart/form-data" action="">
             {% csrf_token %}
             
@@ -20,7 +20,7 @@
         
         <!-- {% if form.errors %}
             <div class="mt-4">
-                <ul class="text-red-600 text-sm">
+                <ul class="text-sm text-red-600">
                     {% for field in form %}
                         {% for error in field.errors %}
                             <li>{{ field.label }}: {{ error }}</li>
