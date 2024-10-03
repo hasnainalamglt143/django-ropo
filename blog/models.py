@@ -13,7 +13,7 @@ class UserProfile(models.Model):
          output_size = (150, 150)
          img.thumbnail(output_size)
          img.save(self.profile_pic.path)
-      super().save()
+      super().save(*args,**kwargs)
 
       
 

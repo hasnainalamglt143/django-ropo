@@ -21,13 +21,7 @@ class CustomUserCreationForm(UserCreationForm):
             raise forms.ValidationError("Email already exists")
         return email
     
-    def clean_profile_pic(self):
-        try:
-            image=Image.open(self.file)
-            image.verify()
-            return True
-        except:
-            raise  forms.ValidationError("pl choose image file")
+   
 
 
 
